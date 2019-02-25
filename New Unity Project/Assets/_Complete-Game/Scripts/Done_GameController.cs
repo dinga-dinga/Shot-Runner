@@ -127,7 +127,7 @@ public class Done_GameController : MonoBehaviour
     public void GameOver()
     {
         gameOverText.text = "Game Over!";
-        restartText.text = "Press 'R' for Restart";
+        restartText.text = "Press 'R' tp restart";
         restart = true;
     }
 
@@ -139,5 +139,13 @@ public class Done_GameController : MonoBehaviour
     public Camera TopCamera()
     {
         return topCamera;
+    }
+
+    public void GameWon()
+    {
+        gameOverText.text = "You Won!";
+        restartText.text = "Press 'R' tp restart\n" +
+                           "Press 'N' to start the next level";
+        restart = true;
     }
 }

@@ -28,6 +28,13 @@ public class PlayerOnContact : MonoBehaviour
             return;
         }
 
+	    if (other.tag == "FinishLine")
+	    {
+            gameController.GameWon();
+	        Destroy(gameObject);
+            return;
+        }
+
         var fractScrip = other.GetComponent<SwapFractured>();
         if (fractScrip != null)
         {
