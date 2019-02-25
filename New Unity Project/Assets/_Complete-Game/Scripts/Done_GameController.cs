@@ -12,7 +12,8 @@ public class Done_GameController : MonoBehaviour
     public float startWait;
     public float waveWait;
 
-    public Camera[] cameras;
+    public Camera topCamera;
+    public Camera[] otherCameras;
 
     public float gameWidth;
     public int numberOfLanes;
@@ -24,6 +25,7 @@ public class Done_GameController : MonoBehaviour
     private bool restart;
     private int score;
     private int currentCameraIndex;
+    private Camera[] cameras;
 
     void Start()
     {
@@ -32,17 +34,21 @@ public class Done_GameController : MonoBehaviour
         gameOverText.text = "";
         score = 0;
         currentCameraIndex = 0;
+
+        cameras = new Camera[otherCameras.Length + 1];
+        cameras[0] = topCamera;
          
          //Turn all cameras off, except the first default one
-         for (int i=1; i<cameras.Length; i++) 
+         for (int i=1; i<cameras.Length; i++)
          {
+             cameras[i] = otherCameras[i - 1];
              cameras[i].gameObject.SetActive(false);
          }
          
          //If any cameras were added to the controller, enable the first one
          if (cameras.Length>0)
          {
-             cameras [0].gameObject.SetActive (true);
+             cameras[0].gameObject.SetActive(true);
              Debug.Log ("Camera with name: " + cameras [0].GetComponent<Camera>().name + ", is now enabled");
          }
 
@@ -123,5 +129,15 @@ public class Done_GameController : MonoBehaviour
         gameOverText.text = "Game Over!";
         restartText.text = "Press 'R' for Restart";
         restart = true;
+    }
+
+    public Camera SelectedCamera()
+    {
+        return cameras[currentCameraIndex];
+    }
+
+    public Camera TopCamera()
+    {
+        return topCamera;
     }
 }

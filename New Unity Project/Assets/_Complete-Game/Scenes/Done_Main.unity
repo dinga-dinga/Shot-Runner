@@ -1223,7 +1223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5103ac10d59cd41a644f5188b85d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: 0, y: 0, z: 38.6}
   speed: {x: 0, y: 0, z: -1}
 --- !u!1 &522763307
 GameObject:
@@ -1700,7 +1699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5103ac10d59cd41a644f5188b85d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: 0, y: 0, z: 80}
   speed: {x: 0, y: 0, z: -1}
 --- !u!136 &719416971
 CapsuleCollider:
@@ -4704,7 +4702,7 @@ Camera:
     m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
@@ -4721,7 +4719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709055198}
   m_LocalRotation: {x: 0.24192187, y: 0, z: 0, w: 0.9702957}
-  m_LocalPosition: {x: 0, y: 7, z: -7}
+  m_LocalPosition: {x: 0, y: 7, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5194,8 +5192,8 @@ MonoBehaviour:
   spawnWait: 1
   startWait: 1
   waveWait: 4
-  cameras:
-  - {fileID: 1461320658}
+  topCamera: {fileID: 1461320658}
+  otherCameras:
   - {fileID: 1709055202}
   gameWidth: 15
   numberOfLanes: 2

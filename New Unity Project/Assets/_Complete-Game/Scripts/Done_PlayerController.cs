@@ -17,10 +17,26 @@ public class Done_PlayerController : MonoBehaviour
 	public float fireRate;
 	 
 	private float nextFire;
-	
-	void Update ()
-	{
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    private Done_GameController gameController;
+
+    void Start()
+    {
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<Done_GameController>();
+        }
+
+        if (gameController == null)
+        {
+            Debug.Log("Cannot find 'GameController' script");
+        }
+    }
+
+    void Update ()
+    {
+        Camera topCamera = gameController.TopCamera();
+        Vector3 mousePos = topCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePos.y = 0.0f;
         GetComponent<Rigidbody>().transform.LookAt(mousePos);
 
