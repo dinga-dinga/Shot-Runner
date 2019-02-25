@@ -1188,7 +1188,7 @@ Camera:
     m_Bits: 768
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: d6d9910b91bb4ce4e8333d6f7a3857dd, type: 2}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 2
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
@@ -1223,6 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5103ac10d59cd41a644f5188b85d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0, z: 38.6}
   speed: {x: 0, y: 0, z: -1}
 --- !u!1 &522763307
 GameObject:
@@ -1699,6 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5103ac10d59cd41a644f5188b85d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0, z: 80}
   speed: {x: 0, y: 0, z: -1}
 --- !u!136 &719416971
 CapsuleCollider:
@@ -2732,8 +2734,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 10, z: 3.25}
-  m_Center: {x: 0, y: 0, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1112871359
 Transform:
   m_ObjectHideFlags: 0
@@ -2743,7 +2745,7 @@ Transform:
   m_GameObject: {fileID: 1112871355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 15, y: 1, z: 20}
+  m_LocalScale: {x: 50, y: 20, z: 60}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -4702,7 +4704,7 @@ Camera:
     m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
@@ -4788,7 +4790,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25601b56ee157124e9ef8e4c07884c58, type: 2}
+  - {fileID: 2100000, guid: 0f995b3145e0e7247a42da6cef1dbf23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5187,7 +5189,7 @@ MonoBehaviour:
   hazards:
   - {fileID: 1755912599284766, guid: 422de5e854cdbe04d9d9f3aed720c447, type: 3}
   - {fileID: 1424730683540818, guid: 2a318b9f75d1bde4195a708dac17dfdc, type: 3}
-  spawnValues: {x: 6, y: 0, z: 16}
+  spawnValues: {x: 6, y: 0, z: 25}
   hazardCount: 10
   spawnWait: 1
   startWait: 1
@@ -5695,11 +5697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 738bdf56857a65f479c367c7b62c4ad7, type: 3}
       propertyPath: boundary.zMin
-      value: -4
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 738bdf56857a65f479c367c7b62c4ad7, type: 3}
       propertyPath: boundary.zMax
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 738bdf56857a65f479c367c7b62c4ad7, type: 3}
       propertyPath: fireRate
