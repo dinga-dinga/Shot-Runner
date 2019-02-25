@@ -9,6 +9,7 @@ TagManager:
   - Terrain
   - PShot
   - ExplosionParts
+  - FinishLine
   layers:
   - Default
   - TransparentFX
