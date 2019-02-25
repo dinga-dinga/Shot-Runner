@@ -21,14 +21,12 @@ public class Done_GameController : MonoBehaviour
     public Text restartText;
     public Text gameOverText;
 
-    private bool gameOver;
     private bool restart;
     private int score;
     private int currentCameraIndex;
 
     void Start()
     {
-        gameOver = false;
         restart = false;
         restartText.text = "";
         gameOverText.text = "";
@@ -106,13 +104,6 @@ public class Done_GameController : MonoBehaviour
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
-
-            if (gameOver)
-            {
-                restartText.text = "Press 'R' for Restart";
-                restart = true;
-                break;
-            }
         }
     }
 
@@ -130,6 +121,7 @@ public class Done_GameController : MonoBehaviour
     public void GameOver()
     {
         gameOverText.text = "Game Over!";
-        gameOver = true;
+        restartText.text = "Press 'R' for Restart";
+        restart = true;
     }
 }
