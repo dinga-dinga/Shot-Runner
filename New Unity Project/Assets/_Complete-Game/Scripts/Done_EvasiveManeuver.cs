@@ -4,7 +4,6 @@ using System.Collections;
 public class Done_EvasiveManeuver : MonoBehaviour
 {
 	public Done_Boundary boundary;
-	public float tilt;
 	public float dodge;
 	public float smoothing;
 	public Vector2 startWait;
@@ -32,7 +31,6 @@ public class Done_EvasiveManeuver : MonoBehaviour
         if (player != null)
         {
             transform.LookAt(player.transform);
-            transform.Rotate(0, 180, 0);
 
             //    if(Vector3.Distance(transform.position, Player.position) <= MaxDist)
             //    {
@@ -64,8 +62,5 @@ public class Done_EvasiveManeuver : MonoBehaviour
                 transform.position += transform.forward * currentSpeed * Time.deltaTime;
             }
         }
-		
-        // Todo: This should take in count z also as it's not looking in one way.
-		GetComponent<Rigidbody>().rotation = Quaternion.Euler (0, 0, GetComponent<Rigidbody>().velocity.x * -tilt);
 	}
 }

@@ -9,8 +9,7 @@ public class Done_Boundary
 
 public class Done_PlayerController : MonoBehaviour
 {
-	public float speed;
-	public float tilt;
+    public float speed;
 	public Done_Boundary boundary;
 
 	public GameObject shot;
@@ -47,10 +46,5 @@ public class Done_PlayerController : MonoBehaviour
 			0.0f, 
 			Mathf.Clamp (GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax)
 		);
-
-		GetComponent<Rigidbody>().rotation = Quaternion.Euler(
-            0.0f, 
-            0.0f, 
-            GetComponent<Rigidbody>().velocity.x * -tilt);
 	}
 }

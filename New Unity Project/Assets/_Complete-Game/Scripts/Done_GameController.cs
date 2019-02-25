@@ -96,12 +96,12 @@ public class Done_GameController : MonoBehaviour
             for (int i = 0; i < hazardCount; i++)
             {
                 GameObject hazard = hazards[Random.Range(0, hazards.Length)];
-                hazard.transform.localScale = new Vector3(middleOfLaneWidth, middleOfLaneWidth, middleOfLaneWidth);
                 int spawnLane = Random.Range(0, numberOfLanes);
                 Vector3 spawnPosition = new Vector3(
                     laneOffsetStart + middleOfLaneWidth + (spawnLane * 2 * middleOfLaneWidth),
-                    spawnValues.y, spawnValues.z);
-                Quaternion spawnRotation = Quaternion.identity;
+                    spawnValues.y,
+                    spawnValues.z);
+                Quaternion spawnRotation = Quaternion.Euler(0, 180, 0);
                 Instantiate(hazard, spawnPosition, spawnRotation);
                 yield return new WaitForSeconds(spawnWait);
             }
