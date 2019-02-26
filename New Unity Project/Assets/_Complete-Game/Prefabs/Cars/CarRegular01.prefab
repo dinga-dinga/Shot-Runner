@@ -456,7 +456,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &65040654819505638
 BoxCollider:
@@ -597,6 +597,7 @@ MonoBehaviour:
   explosion: {fileID: 100012, guid: 160925a6fe2664f2a978566b819f0af0, type: 3}
   scoreValue: 5
   isShotIndestructible: 0
+  isDemolisher: 0
 --- !u!114 &730545006282847624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7850f24249e4056b2189de03ae584c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 30
 --- !u!1 &1432806779278650
 GameObject:
   m_ObjectHideFlags: 0
