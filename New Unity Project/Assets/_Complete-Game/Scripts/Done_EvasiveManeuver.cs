@@ -12,8 +12,8 @@ public class Done_EvasiveManeuver : MonoBehaviour
 
     public float minDist;
     public float maxDist;
+    public float movementSpeed;
 
-	private float currentSpeed;
     private float targetManeuver;
     private GameObject player;
 
@@ -22,8 +22,7 @@ public class Done_EvasiveManeuver : MonoBehaviour
         if (player == null)
             player = GameObject.FindWithTag("Player");
 
-		currentSpeed = GetComponent<Rigidbody>().velocity.z;
-		StartCoroutine(Evade());
+		//StartCoroutine(Evade());
 	}
 
     void Update()
@@ -32,10 +31,16 @@ public class Done_EvasiveManeuver : MonoBehaviour
         {
             transform.LookAt(player.transform);
 
-            //    if(Vector3.Distance(transform.position, Player.position) <= MaxDist)
-            //    {
-            //         //Here Call any function U want Like Shoot at here or something
-            //    } 
+            if (Vector3.Distance(transform.position, player.transform.position) >= minDist)
+            {
+                transform.position += transform.forward * movementSpeed * Time.deltaTime;
+
+                if (Vector3.Distance(transform.position, player.transform.position) <= maxDist)
+                {
+                    //Here Call any function U want Like Shoot at here or something
+                }
+
+            }
         }
     }
 	
@@ -53,14 +58,14 @@ public class Done_EvasiveManeuver : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		GetComponent<Rigidbody>().velocity = new Vector3 (0.0f, 0.0f, currentSpeed);
+        //if (player != null)
+        //{
+        //    if (Vector3.Distance(transform.position, player.transform.position) >= minDist)
+        //    {
+        //        transform.position += transform.forward * movementSpeed * Time.deltaTime;
+        //    }
+        //}
 
-        if (player != null)
-        {
-            if (Vector3.Distance(transform.position, player.transform.position) >= minDist)
-            {
-                transform.position += transform.forward * currentSpeed * Time.deltaTime;
-            }
-        }
+        //GetComponent<Rigidbody>().velocity = new Vector3 (0.0f, 0.0f, movementSpeed);
 	}
 }

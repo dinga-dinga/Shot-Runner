@@ -9,7 +9,6 @@ public class SwapFractured : MonoBehaviour
 
     public void SpawnFracturedObject()
     {
-        print("Swap called");
         Destroy(originalObject);
         GameObject fractObj = Instantiate(fracturedObject, originalObject.transform.position, originalObject.transform.rotation) as GameObject;
         fractObj.GetComponent<ExplodeObject>().Explode();

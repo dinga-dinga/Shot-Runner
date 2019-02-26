@@ -1207,12 +1207,11 @@ GameObject:
   - component: {fileID: 65803415848169292}
   - component: {fileID: 65579149220594430}
   - component: {fileID: 82280334768821608}
-  - component: {fileID: 408370381378823985}
   - component: {fileID: 611753011828266060}
   - component: {fileID: 3341006250430809726}
   m_Layer: 0
   m_Name: Truck01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1226,7 +1225,7 @@ Transform:
   m_GameObject: {fileID: 1986159551140362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4197983780611646}
   - {fileID: 4970632029076942}
@@ -1373,21 +1372,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &408370381378823985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986159551140362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d553ec1b012b114a91bb13b598b381a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalObject: {fileID: 1986159551140362}
-  fracturedObject: {fileID: 1986159551140362, guid: b72bfc3c991074d4fb61ad63aa01686a,
-    type: 3}
 --- !u!114 &611753011828266060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1400,9 +1384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6760fc40b4d3274a86f7fca8e2c7c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  explosion: {fileID: 100012, guid: 160925a6fe2664f2a978566b819f0af0, type: 3}
   scoreValue: 15
-  isShotIndestructible: 1
+  isShotResistant: 1
   isDemolisher: 1
 --- !u!114 &3341006250430809726
 MonoBehaviour:
