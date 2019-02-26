@@ -19,10 +19,10 @@ public class Done_EvasiveManeuver : MonoBehaviour
 
 	void Start ()
 	{
-        if (player == null)
-            player = GameObject.FindWithTag("Player");
-
-		//StartCoroutine(Evade());
+	    if (player == null)
+	    {
+	        player = GameObject.FindWithTag("Player");
+        }
 	}
 
     void Update()
@@ -34,13 +34,11 @@ public class Done_EvasiveManeuver : MonoBehaviour
             if (Vector3.Distance(transform.position, player.transform.position) >= minDist)
             {
                 transform.position += transform.forward * movementSpeed * Time.deltaTime;
-
-                if (Vector3.Distance(transform.position, player.transform.position) <= maxDist)
-                {
-                    //Here Call any function U want Like Shoot at here or something
-                }
-
             }
+        }
+        else
+        {
+            GetComponent<Rigidbody>().velocity = transform.forward * movementSpeed;
         }
     }
 	

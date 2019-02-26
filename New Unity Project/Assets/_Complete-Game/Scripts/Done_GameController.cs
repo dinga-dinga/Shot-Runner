@@ -1,11 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
+[System.Serializable]
+public class Hazard
+{
+    public GameObject obj;
+    public int chance;
+}
 
 public class Done_GameController : MonoBehaviour
 {
-    public GameObject[] hazards;
+    public Hazard[] hazards;
     public Vector3 spawnValues;
     public int hazardCount;
     public float spawnWait;
@@ -25,6 +34,7 @@ public class Done_GameController : MonoBehaviour
     private bool restart;
     private int score;
     private int currentCameraIndex;
+    private int chancesSum;
     private Camera[] cameras;
 
     void Start()
@@ -34,6 +44,12 @@ public class Done_GameController : MonoBehaviour
         gameOverText.text = "";
         score = 0;
         currentCameraIndex = 0;
+
+        chancesSum = 0;
+        foreach (var hazard in hazards)
+        {
+            chancesSum += hazard.chance;
+        }
 
         cameras = new Camera[otherCameras.Length + 1];
         cameras[0] = topCamera;
@@ -89,6 +105,23 @@ public class Done_GameController : MonoBehaviour
         }
     }
 
+    private GameObject GetRandomHazard()
+    {
+        int remaining = Random.Range(0, chancesSum);
+
+        foreach (var hazard in hazards)
+        {
+            remaining -= hazard.chance;
+
+            if (remaining < 0)
+            {
+                return hazard.obj;
+            }
+        }
+
+        return null;
+    }
+
     IEnumerator SpawnWaves()
     {
         float middleOfLaneWidth = (gameWidth / numberOfLanes) / 2;
@@ -99,7 +132,7 @@ public class Done_GameController : MonoBehaviour
         {
             for (int i = 0; i < hazardCount; i++)
             {
-                GameObject hazard = hazards[Random.Range(0, hazards.Length)];
+                GameObject hazard = GetRandomHazard();
                 int spawnLane = Random.Range(0, numberOfLanes);
                 Vector3 spawnPosition = new Vector3(
                     laneOffsetStart + middleOfLaneWidth + (spawnLane * 2 * middleOfLaneWidth),
