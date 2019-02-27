@@ -96,7 +96,7 @@ MonoBehaviour:
   shotSpawn: {fileID: 400006}
   minDist: 10
   maxDist: 30
-  fireDelay: 1.6
+  fireDelay: 1.4
   movementSpeed: 8
 --- !u!82 &8200000
 AudioSource:

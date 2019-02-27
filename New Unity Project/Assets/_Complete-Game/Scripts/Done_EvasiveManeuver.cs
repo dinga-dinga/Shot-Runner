@@ -45,7 +45,6 @@ public class Done_EvasiveManeuver : MonoBehaviour
             {
                 if (shouldFire)
                 {
-                    print("ShouldFire");
                     shouldFire = false;
                     shouldWalk = false;
                     actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
@@ -75,10 +74,8 @@ public class Done_EvasiveManeuver : MonoBehaviour
 
     IEnumerator Fire()
     {
-        print("Fire");
         // This sould be set accordingly to the aim animation
         yield return new WaitForSeconds(0.6f);
-        print("Fire time");
         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
         GetComponent<AudioSource>().Play();
         shouldWalk = true;
@@ -86,9 +83,7 @@ public class Done_EvasiveManeuver : MonoBehaviour
 
     IEnumerator FireDelay(float fireDelay)
     {
-        print("FireDelay");
         yield return new WaitForSeconds(fireDelay);
-        print("FireDelay time");
         shouldFire = true;
     }
 }
