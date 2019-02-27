@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17eae5e07b72bfd4e9725e1d8ceffe89
+guid: c8008cb7c9dde12428c856f8dc59f044
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -110,12 +110,17 @@ ModelImporter:
     9500000: //RootNode
     13700000: Soldat
     13700002: Soldier
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #27'
+    second: {fileID: 2100000, guid: c547624e174de984882f0a14b4bb32e1, type: 2}
   materials:
     importMaterials: 0
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

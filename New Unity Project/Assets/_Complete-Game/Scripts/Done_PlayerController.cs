@@ -16,15 +16,15 @@ public class Done_PlayerController : MonoBehaviour
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float fireRate;
-    public bool notShooting = true;
 
+    private bool notShooting = true;
     private float nextFire;
     private Done_GameController gameController;
     private SoldierActions actions;
 
     void Start()
     {
-        actions = transform.Find("Soldier").GetComponent<SoldierActions>();
+        actions = transform.Find("SoldierIsrael").GetComponent<SoldierActions>();
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (gameControllerObject != null)
         {
@@ -57,20 +57,22 @@ public class Done_PlayerController : MonoBehaviour
 		float moveVertical = Input.GetAxis ("Vertical");
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		GetComponent<Rigidbody>().velocity = movement * speed;
 
+        // TODO: Fine tune movement - its slow and stuttery
+        GetComponent<Rigidbody>().velocity = movement * speed;
+
+        transform.Find("SoldierIsrael").transform.position = GetComponent<Rigidbody>().position;
+        GetComponent<Rigidbody>().position = new Vector3
+        (
+            Mathf.Clamp(GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax),
+            0.0f,
+            Mathf.Clamp(GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax)
+        );
         if (actions != null && notShooting)
         {
             actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
         }
-        GetComponent<Rigidbody>().position = new Vector3
-		(
-			Mathf.Clamp (GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax), 
-			0.0f, 
-			Mathf.Clamp (GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax)
-		);
-        transform.Find("Soldier").transform.position = transform.position;
-
+        transform.Find("SoldierIsrael").transform.position = GetComponent<Rigidbody>().position;
     }
 
     IEnumerator Fire()
