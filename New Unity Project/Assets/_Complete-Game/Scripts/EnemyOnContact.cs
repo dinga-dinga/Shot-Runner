@@ -33,7 +33,7 @@ public class EnemyOnContact : MonoBehaviour
             var fractScrip = other.GetComponent<SwapFractured>();
             if (fractScrip != null)
             {
-                fractScrip.SpawnFracturedObject();
+                fractScrip.SpawnFracturedObject(explosion);
             }
         }
         else if (other.tag == "PShot")
@@ -43,7 +43,7 @@ public class EnemyOnContact : MonoBehaviour
                 var fractScrip = GetComponent<SwapFractured>();
                 if (fractScrip != null)
                 {
-                    fractScrip.SpawnFracturedObject();
+                    fractScrip.SpawnFracturedObject(explosion);
                 }
                 else if (explosion != null)
                 {
