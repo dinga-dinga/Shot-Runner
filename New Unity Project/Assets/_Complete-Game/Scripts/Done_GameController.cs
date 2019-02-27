@@ -20,6 +20,7 @@ public class Done_GameController : MonoBehaviour
     public float spawnWait;
     public float startWait;
     public float waveWait;
+    public float gameOverWait;
 
     public Camera topCamera;
     public Camera[] otherCameras;
@@ -197,7 +198,7 @@ public class Done_GameController : MonoBehaviour
 
     IEnumerator GameOverEnumerator()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(gameOverWait);
         allowedToContinue = false;
         Pause(true);
     }

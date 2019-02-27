@@ -5164,6 +5164,7 @@ MonoBehaviour:
   spawnWait: 1
   startWait: 1
   waveWait: 4
+  gameOverWait: 3
   topCamera: {fileID: 1461320658}
   otherCameras:
   - {fileID: 1709055202}
