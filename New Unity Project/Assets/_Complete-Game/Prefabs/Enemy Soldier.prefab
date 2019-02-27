@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 5400000}
   - component: {fileID: 6865886842236580341}
-  - component: {fileID: 11400000}
   - component: {fileID: 11400008}
   - component: {fileID: 8200000}
   - component: {fileID: 2406757878348058035}
@@ -71,22 +70,6 @@ MonoBehaviour:
   scoreValue: 50
   isShotResistant: 0
   isDemolisher: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 365dd2da98dd9431b8c5d7406c200eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shot: {fileID: 100000, guid: 11e27c26ac87b40f0a62ec40d7261989, type: 3}
-  shotSpawn: {fileID: 400006}
-  fireRate: 1.5
-  delay: 0.5
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,8 +92,11 @@ MonoBehaviour:
   startWait: {x: 0.5, y: 1}
   maneuverTime: {x: 1, y: 2}
   maneuverWait: {x: 1, y: 2}
+  shot: {fileID: 100000, guid: 11e27c26ac87b40f0a62ec40d7261989, type: 3}
+  shotSpawn: {fileID: 400006}
   minDist: 10
-  maxDist: 20
+  maxDist: 30
+  fireDelay: 1.6
   movementSpeed: 8
 --- !u!82 &8200000
 AudioSource:
@@ -266,6 +252,30 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.46, z: 0}
+--- !u!114 &948166501826257851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153378086555035418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db748ce62b73db42a8f7f188eefeb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3228615493664343599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153378086555035418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db748ce62b73db42a8f7f188eefeb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4599932440217857631
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +440,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
       propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: arsenal.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
@@ -440,6 +462,18 @@ PrefabInstance:
       propertyPath: leftGunBone
       value: 
       objectReference: {fileID: 4153378086555400878}
+    - target: {fileID: 11400000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: arsenal.Array.data[0].name
+      value: AK-74M
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: arsenal.Array.data[0].rightGun
+      value: 
+      objectReference: {fileID: 100000, guid: e09f1f44b9841084facd2ab03e7f14ac, type: 3}
+    - target: {fileID: 11400000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: arsenal.Array.data[0].controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dffbd9326394a8d47a87a1e2aec70a59, type: 2}
     - target: {fileID: 13700000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
       propertyPath: m_Bones.Array.data[0]
       value: 
@@ -620,6 +654,30 @@ PrefabInstance:
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 4153378086555400902}
+    - target: {fileID: 400062, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.03674357
+      objectReference: {fileID: 0}
+    - target: {fileID: 400062, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7474951
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.008296066
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.041526318
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.011592954
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99721766
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de63ee434fe39914b8d2f5680c62d05f, type: 3}
 --- !u!4 &4153378086555400898 stripped
