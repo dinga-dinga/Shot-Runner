@@ -20,6 +20,7 @@ public class Done_GameController : MonoBehaviour
     public float spawnWait;
     public float startWait;
     public float waveWait;
+    public float gameOverWait;
 
     public Camera topCamera;
     public Camera[] otherCameras;
@@ -36,10 +37,15 @@ public class Done_GameController : MonoBehaviour
     private int currentCameraIndex;
     private int chancesSum;
     private Camera[] cameras;
+    private bool paused;
+    private bool allowedToContinue;
+    private string textBeforePause;
 
     void Start()
     {
         restart = false;
+        paused = false;
+        allowedToContinue = true;
         restartText.text = "";
         gameOverText.text = "";
         score = 0;
@@ -50,6 +56,8 @@ public class Done_GameController : MonoBehaviour
         {
             chancesSum += hazard.chance;
         }
+
+        Time.timeScale = 1;
 
         cameras = new Camera[otherCameras.Length + 1];
         cameras[0] = topCamera;
@@ -96,12 +104,43 @@ public class Done_GameController : MonoBehaviour
              }
          }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Pause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+
         if (restart)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+        }
+    }
+
+    private void Pause(bool gameOver = false)
+    {
+        if (!paused)
+        {
+            if (!gameOver)
+            {
+                textBeforePause = gameOverText.text;
+                gameOverText.text = "Game Paused";
+            }
+
+            Time.timeScale = 0;
+            paused = true;
+        }
+        else if (allowedToContinue)
+        {
+            gameOverText.text = textBeforePause;
+            Time.timeScale = 1;
+            paused = false;
         }
     }
 
@@ -152,9 +191,16 @@ public class Done_GameController : MonoBehaviour
         UpdateScore();
     }
 
-    void UpdateScore()
+    private void UpdateScore()
     {
         scoreText.text = "Score: " + score;
+    }
+
+    IEnumerator GameOverEnumerator()
+    {
+        yield return new WaitForSeconds(gameOverWait);
+        allowedToContinue = false;
+        Pause(true);
     }
 
     public void GameOver()
@@ -162,6 +208,8 @@ public class Done_GameController : MonoBehaviour
         gameOverText.text = "Game Over!";
         restartText.text = "Press 'R' tp restart";
         restart = true;
+
+        StartCoroutine(GameOverEnumerator());
     }
 
     public Camera SelectedCamera()
