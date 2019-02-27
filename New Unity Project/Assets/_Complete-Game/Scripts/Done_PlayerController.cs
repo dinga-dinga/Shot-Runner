@@ -7,6 +7,7 @@ public class Done_Boundary
 	public float xMin, xMax, zMin, zMax;
 }
 
+[RequireComponent(typeof(SoldierActions))]
 public class Done_PlayerController : MonoBehaviour
 {
     public float speed;
@@ -18,9 +19,11 @@ public class Done_PlayerController : MonoBehaviour
 	 
 	private float nextFire;
     private Done_GameController gameController;
+    private SoldierActions actions;
 
     void Start()
     {
+        actions = transform.Find("Soldier").GetComponent<SoldierActions>();
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (gameControllerObject != null)
         {
@@ -42,10 +45,9 @@ public class Done_PlayerController : MonoBehaviour
 
         if (Input.GetButton("Fire1") && Time.time > nextFire) 
 		{
-			nextFire = Time.time + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-			GetComponent<AudioSource>().Play ();
-		}
+            nextFire = Time.time + fireRate;
+            StartCoroutine(Fire());
+        }
 	}
 
 	void FixedUpdate ()
@@ -63,4 +65,12 @@ public class Done_PlayerController : MonoBehaviour
 			Mathf.Clamp (GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax)
 		);
 	}
+
+    IEnumerator Fire()
+    {
+        actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
+        yield return new WaitForSeconds(0.6f);
+        Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        GetComponent<AudioSource>().Play();
+    }
 }
