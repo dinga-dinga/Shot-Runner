@@ -5158,7 +5158,7 @@ MonoBehaviour:
   - obj: {fileID: 1986159551140362, guid: 86cecbb8375dec74289b750f3dd0bba5, type: 3}
     chance: 1
   - obj: {fileID: 100002, guid: afc18fc39ade3744397c0c993b57be53, type: 3}
-    chance: 2
+    chance: 3
   spawnValues: {x: 6, y: 0, z: 25}
   hazardCount: 10
   spawnWait: 1

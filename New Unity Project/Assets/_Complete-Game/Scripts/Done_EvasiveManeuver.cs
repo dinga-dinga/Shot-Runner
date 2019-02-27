@@ -47,7 +47,10 @@ public class Done_EvasiveManeuver : MonoBehaviour
                 {
                     shouldFire = false;
                     shouldWalk = false;
-                    actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
+                    if (actions != null)
+                    {
+                        actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
+                    }
                     StartCoroutine(Fire());
                     StartCoroutine(FireDelay(fireDelay));
                 }
@@ -55,18 +58,24 @@ public class Done_EvasiveManeuver : MonoBehaviour
 
             if (Vector3.Distance(transform.position, player.transform.position) >= minDist && shouldWalk)
             {
-                actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
+                if (actions != null)
+                {
+                    actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
+                }
                 transform.position += transform.forward * movementSpeed * Time.deltaTime;
                 transform.Find("Soldier").transform.position = transform.position;
             }
-            else
+            else if (actions != null)
             {
                 actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
             }
         }
         else
         {
-            actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
+            if (actions != null)
+            {
+                actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
+            }
             GetComponent<Rigidbody>().velocity = transform.forward * movementSpeed;
             transform.Find("Soldier").transform.position = transform.position;
         }
