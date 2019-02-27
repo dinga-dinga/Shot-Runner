@@ -17,9 +17,11 @@ public class Done_EvasiveManeuver : MonoBehaviour
     public float maxDist;
     public float fireDelay;
     public float movementSpeed;
+    public float roadCenter = 0;
 
     private bool shouldFire = true;
     private bool shouldWalk = true;
+    private bool walkToCenter = false;
     private float targetManeuver;
     private GameObject player;
 
@@ -35,49 +37,85 @@ public class Done_EvasiveManeuver : MonoBehaviour
         }
     }
 
+    private void MoveForwards()
+    {
+        transform.position += transform.forward * movementSpeed * Time.deltaTime;
+        Transform soldier = transform.Find("Soldier");
+        if (soldier != null)
+        {
+            soldier.transform.position = transform.position;
+        }
+    }
+
+    private bool IsVehicleBehind()
+    {
+        RaycastHit hit;
+        Vector3 startPosition = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        Vector3 behindDirection = new Vector3(0, 0, 1);
+        return Physics.Raycast(startPosition, behindDirection, out hit);
+    }
+
     void Update()
     {
-        if (player != null)
+        if (IsVehicleBehind())
         {
-            transform.LookAt(player.transform);
+            walkToCenter = true;
+        }
 
-            if (Vector3.Distance(transform.position, player.transform.position) <= maxDist)
+        if (walkToCenter)
+        {
+            if ((int)transform.position.x == (int)roadCenter)
             {
-                if (shouldFire)
-                {
-                    shouldFire = false;
-                    shouldWalk = false;
-                    if (actions != null)
-                    {
-                        actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
-                    }
-                    StartCoroutine(Fire());
-                    StartCoroutine(FireDelay(fireDelay));
-                }
+                Debug.Log("=false!!");
+                walkToCenter = false;
             }
-
-            if (Vector3.Distance(transform.position, player.transform.position) >= minDist && shouldWalk)
+            else
             {
-                if (actions != null)
-                {
-                    actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
-                }
-                transform.position += transform.forward * movementSpeed * Time.deltaTime;
-                transform.Find("Soldier").transform.position = transform.position;
-            }
-            else if (actions != null)
-            {
-                actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
+                Vector3 center = new Vector3(roadCenter, transform.position.y, transform.position.z);
+                transform.LookAt(center);
+                MoveForwards();
+                return;
             }
         }
-        else
+
+        if (player == null)
         {
             if (actions != null)
             {
                 actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
             }
-            GetComponent<Rigidbody>().velocity = transform.forward * movementSpeed;
-            transform.Find("Soldier").transform.position = transform.position;
+            MoveForwards();
+            return;
+        }
+
+        transform.LookAt(player.transform);
+
+        if (Vector3.Distance(transform.position, player.transform.position) <= maxDist)
+        {
+            if (shouldFire)
+            {
+                shouldFire = false;
+                shouldWalk = false;
+                if (actions != null)
+                {
+                    actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
+                }
+                StartCoroutine(Fire());
+                StartCoroutine(FireDelay(fireDelay));
+            }
+        }
+
+        if (Vector3.Distance(transform.position, player.transform.position) >= minDist && shouldWalk)
+        {
+            if (actions != null)
+            {
+                actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
+            }
+            MoveForwards();
+        }
+        else if (actions != null)
+        {
+            actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
         }
     }
 
