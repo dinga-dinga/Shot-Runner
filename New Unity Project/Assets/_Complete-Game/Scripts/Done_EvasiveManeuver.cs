@@ -4,13 +4,6 @@ using System.Collections;
 [RequireComponent(typeof(SoldierActions))]
 public class Done_EvasiveManeuver : MonoBehaviour
 {
-    public Done_Boundary boundary;
-    public float dodge;
-    public float smoothing;
-    public Vector2 startWait;
-    public Vector2 maneuverTime;
-    public Vector2 maneuverWait;
-
     public GameObject shot;
     public Transform shotSpawn;
     public float minDist;
@@ -20,7 +13,6 @@ public class Done_EvasiveManeuver : MonoBehaviour
 
     private bool shouldFire = true;
     private bool shouldWalk = true;
-    private float targetManeuver;
     private GameObject player;
 
     private SoldierActions actions;
@@ -35,7 +27,7 @@ public class Done_EvasiveManeuver : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (player != null)
         {
