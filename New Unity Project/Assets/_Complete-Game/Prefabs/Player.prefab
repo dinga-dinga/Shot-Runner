@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 400006}
   - component: {fileID: 5400000}
   - component: {fileID: 11400000}
+  - component: {fileID: 4883447875776322239}
   - component: {fileID: 8200000}
   - component: {fileID: 2752380665210826791}
   m_Layer: 0
@@ -103,7 +104,21 @@ MonoBehaviour:
     zMax: 0
   shot: {fileID: 100000, guid: f4ec271e525e14ca9927a07e6a2e153d, type: 3}
   shotSpawn: {fileID: 400004}
-  fireRate: 0.25
+  fireRate: 0.75
+--- !u!114 &4883447875776322239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd16ba6c677cca44997b0301d2b6236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 100012, guid: 160925a6fe2664f2a978566b819f0af0, type: 3}
+  playerExplosion: {fileID: 100008, guid: 3455fe69f7ddc4604b95bf9b0a1e88d7, type: 3}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 0
@@ -208,7 +223,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100006}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.3
   m_Height: 1.5
@@ -332,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100096, guid: e9f5577891160fc4b8c6a7dedaf55a40, type: 3}
       propertyPath: m_TagString
-      value: EnemyAI
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: e9f5577891160fc4b8c6a7dedaf55a40, type: 3}
       propertyPath: m_LocalPosition.x

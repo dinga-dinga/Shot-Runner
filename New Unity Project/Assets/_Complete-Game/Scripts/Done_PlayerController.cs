@@ -16,8 +16,9 @@ public class Done_PlayerController : MonoBehaviour
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float fireRate;
-	 
-	private float nextFire;
+    public bool notShooting = true;
+
+    private float nextFire;
     private Done_GameController gameController;
     private SoldierActions actions;
 
@@ -57,20 +58,31 @@ public class Done_PlayerController : MonoBehaviour
 
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		GetComponent<Rigidbody>().velocity = movement * speed;
-		
-		GetComponent<Rigidbody>().position = new Vector3
+
+        if (actions != null && notShooting)
+        {
+            actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
+        }
+        GetComponent<Rigidbody>().position = new Vector3
 		(
 			Mathf.Clamp (GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax), 
 			0.0f, 
 			Mathf.Clamp (GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax)
 		);
-	}
+        transform.Find("Soldier").transform.position = transform.position;
+
+    }
 
     IEnumerator Fire()
     {
-        actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
+        notShooting = false;
+        if (actions != null)
+        {
+            actions.SendMessage("Aiming", SendMessageOptions.DontRequireReceiver);
+        }
         yield return new WaitForSeconds(0.6f);
         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
         GetComponent<AudioSource>().Play();
+        notShooting = true;
     }
 }
