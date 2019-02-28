@@ -1,129 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &100000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 400000}
-  - component: {fileID: 13700000}
-  m_Layer: 0
-  m_Name: Soldier
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &400000
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39370078, y: 0.39370078, z: 0.39370078}
-  m_Children: []
-  m_Father: {fileID: 400096}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &13700000
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 25601b56ee157124e9ef8e4c07884c58, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300002, guid: ccaebcf8dc6cce84c9b4d6f4aeb33410, type: 3}
-  m_Bones:
-  - {fileID: 400092}
-  - {fileID: 400086}
-  - {fileID: 400034}
-  - {fileID: 400070}
-  - {fileID: 400074}
-  - {fileID: 400068}
-  - {fileID: 400076}
-  - {fileID: 400002}
-  - {fileID: 400032}
-  - {fileID: 400090}
-  - {fileID: 400088}
-  - {fileID: 400080}
-  - {fileID: 400078}
-  - {fileID: 400004}
-  - {fileID: 400022}
-  - {fileID: 400006}
-  - {fileID: 400028}
-  - {fileID: 400018}
-  - {fileID: 400026}
-  - {fileID: 400014}
-  - {fileID: 400008}
-  - {fileID: 400030}
-  - {fileID: 400016}
-  - {fileID: 400012}
-  - {fileID: 400024}
-  - {fileID: 400010}
-  - {fileID: 400066}
-  - {fileID: 400072}
-  - {fileID: 400064}
-  - {fileID: 400084}
-  - {fileID: 400082}
-  - {fileID: 400036}
-  - {fileID: 400054}
-  - {fileID: 400038}
-  - {fileID: 400060}
-  - {fileID: 400050}
-  - {fileID: 400058}
-  - {fileID: 400046}
-  - {fileID: 400040}
-  - {fileID: 400062}
-  - {fileID: 400048}
-  - {fileID: 400044}
-  - {fileID: 400056}
-  - {fileID: 400042}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 400092}
-  m_AABB:
-    m_Center: {x: 0.03813888, y: -0.022223853, z: -0.00000011920929}
-    m_Extent: {x: 0.47503805, y: 0.10920168, z: 0.2850332}
-  m_DirtyAABB: 0
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,7 +1470,7 @@ GameObject:
   - component: {fileID: 8933266146326178581}
   - component: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Soldier
+  m_Name: SoldierIsrael
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1613,7 +1489,7 @@ Transform:
   m_Children:
   - {fileID: 400094}
   - {fileID: 400092}
-  - {fileID: 400000}
+  - {fileID: 4260424773967187646}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1675,3 +1551,127 @@ MonoBehaviour:
     rightGun: {fileID: 100000, guid: 4d9b132573d0584439c28e583cfce43d, type: 3}
     leftGun: {fileID: 0}
     controller: {fileID: 9100000, guid: dffbd9326394a8d47a87a1e2aec70a59, type: 2}
+--- !u!1 &3138126714753189053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4260424773967187646}
+  - component: {fileID: 5913932967324337624}
+  m_Layer: 0
+  m_Name: SoldierIsrael
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4260424773967187646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138126714753189053}
+  m_LocalRotation: {x: 0.000000021855694, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.39370078, y: 0.39370078, z: 0.39370078}
+  m_Children: []
+  m_Father: {fileID: 400096}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &5913932967324337624
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138126714753189053}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: f20e37600774d1445956600be9ca1e5d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300002, guid: ccaebcf8dc6cce84c9b4d6f4aeb33410, type: 3}
+  m_Bones:
+  - {fileID: 400092}
+  - {fileID: 400086}
+  - {fileID: 400034}
+  - {fileID: 400070}
+  - {fileID: 400074}
+  - {fileID: 400068}
+  - {fileID: 400076}
+  - {fileID: 400002}
+  - {fileID: 400032}
+  - {fileID: 400090}
+  - {fileID: 400088}
+  - {fileID: 400080}
+  - {fileID: 400078}
+  - {fileID: 400004}
+  - {fileID: 400022}
+  - {fileID: 400006}
+  - {fileID: 400028}
+  - {fileID: 400018}
+  - {fileID: 400026}
+  - {fileID: 400014}
+  - {fileID: 400008}
+  - {fileID: 400030}
+  - {fileID: 400016}
+  - {fileID: 400012}
+  - {fileID: 400024}
+  - {fileID: 400010}
+  - {fileID: 400066}
+  - {fileID: 400072}
+  - {fileID: 400064}
+  - {fileID: 400084}
+  - {fileID: 400082}
+  - {fileID: 400036}
+  - {fileID: 400054}
+  - {fileID: 400038}
+  - {fileID: 400060}
+  - {fileID: 400050}
+  - {fileID: 400058}
+  - {fileID: 400046}
+  - {fileID: 400040}
+  - {fileID: 400062}
+  - {fileID: 400048}
+  - {fileID: 400044}
+  - {fileID: 400056}
+  - {fileID: 400042}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 400092}
+  m_AABB:
+    m_Center: {x: 0.03813888, y: -0.022223853, z: -0.00000011920929}
+    m_Extent: {x: 0.47503805, y: 0.10920168, z: 0.2850332}
+  m_DirtyAABB: 0
