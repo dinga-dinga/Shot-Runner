@@ -2,6 +2,17 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+[System.Serializable]
+public class SafeSpot
+{
+    public float value = 0;
+
+    public SafeSpot(float value)
+    {
+        this.value = value;
+    }
+}
+
 [RequireComponent(typeof(SoldierActions))]
 public class EvasiveManeuver : MonoBehaviour
 {
@@ -11,14 +22,15 @@ public class EvasiveManeuver : MonoBehaviour
     public float maxDist;
     public float fireDelay;
     public float movementSpeed;
-    public float roadCenter = 0;
     public float backRayDistance = 1.0f;
+    public SafeSpot[] safeSpots;
 
     private bool shouldFire = true;
     private bool shouldWalk = true;
     private bool walkToCenter = false;
     private float targetManeuver;
     private GameObject player;
+    private GameController gameController;
 
     private SoldierActions actions;
 
@@ -29,6 +41,27 @@ public class EvasiveManeuver : MonoBehaviour
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
+        }
+
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<GameController>();
+        }
+
+        if (gameController == null)
+        {
+            Debug.Log("Cannot find 'GameController' script");
+        }
+
+        // Apply spacial ability to soldiers
+        float middleOfLaneWidth = (gameController.gameWidth / gameController.numberOfLanes) / 2;
+        float laneOffsetStart = -(gameController.gameWidth / 2);
+
+        safeSpots = new SafeSpot[gameController.numberOfLanes - 1];
+        for (int j = 0; j < gameController.numberOfLanes - 1; j++)
+        {
+            safeSpots[j] = new SafeSpot(laneOffsetStart + (j + 1) * 2 * middleOfLaneWidth);
         }
     }
 
@@ -76,14 +109,25 @@ public class EvasiveManeuver : MonoBehaviour
 
         if (walkToCenter)
         {
-            if (Math.Abs(transform.position.x - roadCenter) < 0.5)
+            float lastValue = 999;
+            SafeSpot safeSpot = new SafeSpot(0);
+            foreach (var spot in safeSpots)
             {
-                Debug.Log("=false!!");
+                float newValue = Math.Abs(transform.position.x - spot.value);
+                if (newValue < lastValue)
+                {
+                    lastValue = newValue;
+                    safeSpot = spot;
+                }
+            }
+
+            if (Math.Abs(transform.position.x - safeSpot.value) < 0.5)
+            {
                 walkToCenter = false;
             }
             else
             {
-                Vector3 center = new Vector3(roadCenter, transform.position.y, transform.position.z);
+                Vector3 center = new Vector3(safeSpot.value, transform.position.y, transform.position.z);
                 transform.LookAt(center);
                 MoveForwards();
                 return;

@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SoldierActions))]
 public class PlayerOnContact : MonoBehaviour
 {
     public GameObject explosion;
 	public GameObject playerExplosion;
 	private GameController gameController;
+    private SoldierActions actions;
+    private Transform soldierCharacter;
+    private bool alreadyDead = false;
 
-	void Start ()
+    void Start ()
 	{
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
 		if (gameControllerObject != null)
@@ -19,11 +23,14 @@ public class PlayerOnContact : MonoBehaviour
 		{
 			Debug.Log ("Cannot find 'GameController' script");
 		}
-	}
+
+        soldierCharacter = transform.Find("SoldierIsrael");
+        actions = soldierCharacter.GetComponent<SoldierActions>();
+    }
 
 	void OnTriggerEnter (Collider other)
 	{
-        if (other.tag == "Boundary" || other.tag == "Terrain" || other.tag == "ExplosionParts")
+        if (other.tag == "Boundary" || other.tag == "Terrain" || other.tag == "ExplosionParts" || alreadyDead)
 		{
             return;
         }
@@ -45,8 +52,19 @@ public class PlayerOnContact : MonoBehaviour
         	Instantiate(explosion, other.transform.position, other.transform.rotation);
         }
 
-		Instantiate(playerExplosion, transform.position, transform.rotation);
+        // TODO: DO WE WANT IT?
+        //if (other.tag == "EShot")
+        //{
+        //    alreadyDead = true;
+        //    actions.SendMessage("Death", SendMessageOptions.DontRequireReceiver);
+        //    Destroy(gameObject, 4);
+        //}
+        //else
+        //{
+            Instantiate(playerExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        //}
+		
 		gameController.GameOver();
-		Destroy (gameObject);
 	}
 }

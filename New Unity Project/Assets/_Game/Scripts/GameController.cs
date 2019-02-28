@@ -178,6 +178,7 @@ public class GameController : MonoBehaviour
                     spawnValues.y,
                     spawnValues.z);
                 Quaternion spawnRotation = Quaternion.Euler(0, 180, 0);
+
                 Instantiate(hazard, spawnPosition, spawnRotation);
                 yield return new WaitForSeconds(spawnWait);
             }
