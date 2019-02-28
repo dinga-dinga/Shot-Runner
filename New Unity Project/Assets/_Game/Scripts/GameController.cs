@@ -28,11 +28,14 @@ public class GameController : MonoBehaviour
     public float gameWidth;
     public int numberOfLanes;
 
+    public int nextSceneNumber;
+
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
 
     private bool restart;
+    private bool next;
     private int score;
     private int currentCameraIndex;
     private int chancesSum;
@@ -44,6 +47,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         restart = false;
+        next = false;
         paused = false;
         allowedToContinue = true;
         restartText.text = "";
@@ -119,6 +123,14 @@ public class GameController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
+
+        if (next)
+        {
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                SceneManager.LoadScene(nextSceneNumber);
             }
         }
     }
@@ -209,6 +221,7 @@ public class GameController : MonoBehaviour
         gameOverText.text = "Game Over!";
         restartText.text = "Press 'R' tp restart";
         restart = true;
+        next = false;
 
         StartCoroutine(GameOverEnumerator());
     }
@@ -229,6 +242,7 @@ public class GameController : MonoBehaviour
         restartText.text = "Press 'R' tp restart\n" +
                            "Press 'N' to start the next level";
         restart = true;
+        next = true;
     }
 
     public void GameTotalWin()
@@ -236,6 +250,7 @@ public class GameController : MonoBehaviour
         gameOverText.text = "You Win!";
         restartText.text = "Press 'R' tp restart";
         restart = true;
+        next = true;
 
         StartCoroutine(GameOverEnumerator());
     }

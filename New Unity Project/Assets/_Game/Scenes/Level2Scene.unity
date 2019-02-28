@@ -3394,6 +3394,7 @@ MonoBehaviour:
   - {fileID: 421086186}
   gameWidth: 21
   numberOfLanes: 3
+  nextSceneNumber: 3
   scoreText: {fileID: 618802813}
   restartText: {fileID: 1662171}
   gameOverText: {fileID: 2086559496}

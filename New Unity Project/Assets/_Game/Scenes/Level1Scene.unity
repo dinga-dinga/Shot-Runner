@@ -5017,15 +5017,15 @@ PrefabInstance:
       propertyPath: boundary.zMax
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 6062847497469504627, guid: 738bdf56857a65f479c367c7b62c4ad7,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 508647919982120502, guid: 738bdf56857a65f479c367c7b62c4ad7,
         type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062847497469504627, guid: 738bdf56857a65f479c367c7b62c4ad7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738bdf56857a65f479c367c7b62c4ad7, type: 3}
@@ -5233,6 +5233,7 @@ MonoBehaviour:
   - {fileID: 1709055202}
   gameWidth: 15
   numberOfLanes: 2
+  nextSceneNumber: 2
   scoreText: {fileID: 330698628}
   restartText: {fileID: 1118447433}
   gameOverText: {fileID: 1018459434}
