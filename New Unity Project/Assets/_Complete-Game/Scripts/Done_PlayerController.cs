@@ -21,10 +21,12 @@ public class Done_PlayerController : MonoBehaviour
     private float nextFire;
     private Done_GameController gameController;
     private SoldierActions actions;
+    private Transform soldierCharacter;
 
     void Start()
     {
-        actions = transform.Find("SoldierIsrael").GetComponent<SoldierActions>();
+        soldierCharacter = transform.Find("SoldierIsrael");
+        actions = soldierCharacter.GetComponent<SoldierActions>();
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (gameControllerObject != null)
         {
@@ -55,24 +57,26 @@ public class Done_PlayerController : MonoBehaviour
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
+        Rigidbody rigCom = GetComponent<Rigidbody>();
 
-		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+        Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
         // TODO: Fine tune movement - its slow and stuttery
-        GetComponent<Rigidbody>().velocity = movement * speed;
+        rigCom.velocity = movement * speed;
 
-        transform.Find("SoldierIsrael").transform.position = GetComponent<Rigidbody>().position;
-        GetComponent<Rigidbody>().position = new Vector3
+        soldierCharacter.transform.position = rigCom.position;
+        rigCom.position = new Vector3
         (
-            Mathf.Clamp(GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax),
+            Mathf.Clamp(rigCom.position.x, boundary.xMin, boundary.xMax),
             0.0f,
-            Mathf.Clamp(GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax)
+            Mathf.Clamp(rigCom.position.z, boundary.zMin, boundary.zMax)
         );
+
         if (actions != null && notShooting)
         {
             actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
         }
-        transform.Find("SoldierIsrael").transform.position = GetComponent<Rigidbody>().position;
+        soldierCharacter.transform.position = rigCom.position;
     }
 
     IEnumerator Fire()
