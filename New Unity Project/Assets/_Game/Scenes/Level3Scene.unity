@@ -1988,6 +1988,7 @@ MonoBehaviour:
   otherCameras: []
   gameWidth: 42
   numberOfLanes: 1
+  nextSceneNumber: 0
   scoreText: {fileID: 1651644618}
   restartText: {fileID: 875958059}
   gameOverText: {fileID: 2008513624}
@@ -2762,16 +2763,6 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 5000
       objectReference: {fileID: 0}
-    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
-        type: 3}
-      propertyPath: isShotResistant
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8785845738066470361, guid: afc18fc39ade3744397c0c993b57be53,
         type: 3}
       propertyPath: m_Enabled
@@ -2792,8 +2783,37 @@ PrefabInstance:
       propertyPath: hitsToTake
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53, type: 3}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: isShotResistant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: isHamas
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: scoreValuePerShot
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: hitsToTake
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: scoreValue
+      value: 5000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afc18fc39ade3744397c0c993b57be53, type: 3}
 --- !u!1 &2097725415 stripped
 GameObject:
