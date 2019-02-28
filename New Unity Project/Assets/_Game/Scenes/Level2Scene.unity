@@ -3385,8 +3385,8 @@ MonoBehaviour:
     chance: 1
   spawnValues: {x: 12, y: 0, z: 25}
   resolution:
-    width: 600
-    height: 900
+    width: 1024
+    height: 768
   hazardCount: 10
   spawnWait: 1
   startWait: 1
