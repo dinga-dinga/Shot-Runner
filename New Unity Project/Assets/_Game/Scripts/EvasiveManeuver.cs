@@ -149,6 +149,7 @@ public class EvasiveManeuver : MonoBehaviour
             {
                 actions.SendMessage("Walk", SendMessageOptions.DontRequireReceiver);
             }
+            transform.rotation = Quaternion.Euler(0, -180, 0);
             MoveForwards();
             return;
         }
