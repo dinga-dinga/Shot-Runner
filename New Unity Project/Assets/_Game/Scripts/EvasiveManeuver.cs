@@ -24,10 +24,11 @@ public class EvasiveManeuver : MonoBehaviour
     public float movementSpeed;
     public float backRayDistance = 1.0f;
     public SafeSpot[] safeSpots;
-
+    
     private bool shouldFire = true;
     private bool shouldWalk = true;
     private bool walkToCenter = false;
+    private bool isAlive = true;
     private float targetManeuver;
     private GameObject player;
     private GameController gameController;
@@ -67,11 +68,14 @@ public class EvasiveManeuver : MonoBehaviour
 
     private void MoveForwards()
     {
-        transform.position += transform.forward * movementSpeed * Time.deltaTime;
-        Transform soldier = transform.Find("Soldier");
-        if (soldier != null)
+        if (isAlive)
         {
-            soldier.transform.position = transform.position;
+            transform.position += transform.forward * movementSpeed * Time.deltaTime;
+            Transform soldier = transform.Find("Soldier");
+            if (soldier != null)
+            {
+                soldier.transform.position = transform.position;
+            }
         }
     }
 
@@ -102,6 +106,11 @@ public class EvasiveManeuver : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isAlive)
+        {
+            return;
+        }
+
         if (IsVehicleBehind())
         {
             walkToCenter = true;
@@ -188,5 +197,10 @@ public class EvasiveManeuver : MonoBehaviour
     {
         yield return new WaitForSeconds(fireDelay);
         shouldFire = true;
+    }
+
+    void Kill()
+    {
+        isAlive = false;
     }
 }

@@ -230,4 +230,13 @@ public class GameController : MonoBehaviour
                            "Press 'N' to start the next level";
         restart = true;
     }
+
+    public void GameTotalWin()
+    {
+        gameOverText.text = "You Win!";
+        restartText.text = "Press 'R' tp restart";
+        restart = true;
+
+        StartCoroutine(GameOverEnumerator());
+    }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400002}
   - component: {fileID: 5400000}
+  - component: {fileID: 8785845738066470361}
   - component: {fileID: 6865886842236580341}
   - component: {fileID: 11400008}
   - component: {fileID: 8200000}
@@ -54,6 +55,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &8785845738066470361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7acb1f3691a89449865b0bd629deeeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 0}
+  scoreValue: 0
+  hitsToTake: 0
 --- !u!114 &6865886842236580341
 MonoBehaviour:
   m_ObjectHideFlags: 0

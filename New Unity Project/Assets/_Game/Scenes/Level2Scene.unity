@@ -1459,7 +1459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 66194853}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: Terrain1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3388,7 +3388,7 @@ MonoBehaviour:
   spawnWait: 1
   startWait: 1
   waveWait: 4
-  gameOverWait: 100
+  gameOverWait: 3
   topCamera: {fileID: 690761901}
   otherCameras:
   - {fileID: 421086186}
@@ -3751,7 +3751,7 @@ GameObject:
   - component: {fileID: 252079318}
   - component: {fileID: 252079317}
   m_Layer: 0
-  m_Name: T
+  m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
