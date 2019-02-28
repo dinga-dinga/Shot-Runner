@@ -12,7 +12,7 @@ public class Hazard
     public int chance;
 }
 
-public class Done_GameController : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     public Hazard[] hazards;
     public Vector3 spawnValues;

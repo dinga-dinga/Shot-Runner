@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(SoldierActions))]
-public class Done_EvasiveManeuver : MonoBehaviour
+public class EvasiveManeuver : MonoBehaviour
 {
     public GameObject shot;
     public Transform shotSpawn;
@@ -11,6 +12,7 @@ public class Done_EvasiveManeuver : MonoBehaviour
     public float fireDelay;
     public float movementSpeed;
     public float roadCenter = 0;
+    public float backRayDistance = 1.0f;
 
     private bool shouldFire = true;
     private bool shouldWalk = true;
@@ -44,8 +46,25 @@ public class Done_EvasiveManeuver : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 startPosition = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+
+        Quaternion leftAngle = Quaternion.AngleAxis(-10, new Vector3(0, 1, 0));
+        Quaternion rightAngle = Quaternion.AngleAxis(10, new Vector3(0, 1, 0));
+
         Vector3 behindDirection = new Vector3(0, 0, 1);
-        return Physics.Raycast(startPosition, behindDirection, out hit);
+        Vector3 leftDirection = leftAngle * behindDirection;
+        Vector3 rightDirection = rightAngle * behindDirection;
+
+        // DrawRay as required
+        Debug.DrawRay(startPosition, behindDirection * backRayDistance, Color.red);
+        Debug.DrawRay(startPosition, leftDirection * backRayDistance, Color.red);
+        Debug.DrawRay(startPosition, rightDirection * backRayDistance, Color.red);
+
+        bool enemyBehind = (Physics.Raycast(startPosition, behindDirection * backRayDistance, out hit) && hit.transform.tag == "Enemy");
+        bool enemyBehindLeft = (Physics.Raycast(startPosition, leftDirection * backRayDistance, out hit) && hit.transform.tag == "Enemy");
+        bool enemyBehindRight = (Physics.Raycast(startPosition, rightDirection * backRayDistance, out hit) && hit.transform.tag == "Enemy");
+
+        return enemyBehind || enemyBehindLeft || enemyBehindRight;
+        
     }
 
     void FixedUpdate()
@@ -57,7 +76,7 @@ public class Done_EvasiveManeuver : MonoBehaviour
 
         if (walkToCenter)
         {
-            if ((int)transform.position.x == (int)roadCenter)
+            if (Math.Abs(transform.position.x - roadCenter) < 0.5)
             {
                 Debug.Log("=false!!");
                 walkToCenter = false;

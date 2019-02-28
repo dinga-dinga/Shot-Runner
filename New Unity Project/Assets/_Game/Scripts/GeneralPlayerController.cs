@@ -2,16 +2,16 @@
 using System.Collections;
 
 [System.Serializable]
-public class Done_Boundary 
+public class Boundary 
 {
 	public float xMin, xMax, zMin, zMax;
 }
 
 [RequireComponent(typeof(SoldierActions))]
-public class Done_PlayerController : MonoBehaviour
+public class GeneralPlayerController : MonoBehaviour
 {
     public float speed;
-	public Done_Boundary boundary;
+	public Boundary boundary;
 
 	public GameObject shot;
 	public Transform shotSpawn;
@@ -19,7 +19,7 @@ public class Done_PlayerController : MonoBehaviour
 
     private bool notShooting = true;
     private float nextFire;
-    private Done_GameController gameController;
+    private GameController gameController;
     private SoldierActions actions;
     private Transform soldierCharacter;
 
@@ -30,7 +30,7 @@ public class Done_PlayerController : MonoBehaviour
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
         if (gameControllerObject != null)
         {
-            gameController = gameControllerObject.GetComponent<Done_GameController>();
+            gameController = gameControllerObject.GetComponent<GameController>();
         }
 
         if (gameController == null)
