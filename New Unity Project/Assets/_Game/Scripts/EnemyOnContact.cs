@@ -25,8 +25,11 @@ public class EnemyOnContact : MonoBehaviour
             Debug.Log("Cannot find 'GameController' script");
         }
 
-        soldierCharacter = transform.Find("Soldier");
-        actions = soldierCharacter.GetComponent<SoldierActions>();
+        if (tag == "EnemyAI")
+        {
+            soldierCharacter = transform.Find("Soldier");
+            actions = soldierCharacter.GetComponent<SoldierActions>();
+        }
     }
 
     void OnTriggerEnter(Collider other)
