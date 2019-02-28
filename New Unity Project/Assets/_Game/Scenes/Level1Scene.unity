@@ -5223,6 +5223,9 @@ MonoBehaviour:
   - obj: {fileID: 100002, guid: afc18fc39ade3744397c0c993b57be53, type: 3}
     chance: 3
   spawnValues: {x: 6, y: 0, z: 25}
+  resolution:
+    width: 600
+    height: 900
   hazardCount: 10
   spawnWait: 1
   startWait: 1

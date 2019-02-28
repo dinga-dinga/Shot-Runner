@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44949996, g: 0.4964959, b: 0.55914426, a: 1}
+  m_IndirectSpecularColor: {r: 0.44949985, g: 0.4964959, b: 0.55914414, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1491,6 +1491,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 738bdf56857a65f479c367c7b62c4ad7, type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 738bdf56857a65f479c367c7b62c4ad7, type: 3}
       propertyPath: boundary.xMin
       value: -11
@@ -1506,10 +1510,6 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 738bdf56857a65f479c367c7b62c4ad7, type: 3}
       propertyPath: boundary.zMax
       value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5400000, guid: 738bdf56857a65f479c367c7b62c4ad7, type: 3}
-      propertyPath: m_Constraints
-      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 398092388289666624, guid: 738bdf56857a65f479c367c7b62c4ad7,
         type: 3}
@@ -1979,6 +1979,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazards: []
   spawnValues: {x: 25, y: 0, z: 25}
+  resolution:
+    width: 1024
+    height: 768
   hazardCount: 0
   spawnWait: 0
   startWait: 0
@@ -1988,6 +1991,7 @@ MonoBehaviour:
   otherCameras: []
   gameWidth: 42
   numberOfLanes: 1
+  nextSceneNumber: 0
   scoreText: {fileID: 1651644618}
   restartText: {fileID: 875958059}
   gameOverText: {fileID: 2008513624}
@@ -2762,16 +2766,6 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 5000
       objectReference: {fileID: 0}
-    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
-        type: 3}
-      propertyPath: isShotResistant
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8785845738066470361, guid: afc18fc39ade3744397c0c993b57be53,
         type: 3}
       propertyPath: m_Enabled
@@ -2791,6 +2785,16 @@ PrefabInstance:
         type: 3}
       propertyPath: hitsToTake
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: isShotResistant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53, type: 3}

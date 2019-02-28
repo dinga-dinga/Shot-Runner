@@ -12,10 +12,18 @@ public class Hazard
     public int chance;
 }
 
+[System.Serializable]
+public class Resolution
+{
+    public int width;
+    public int height;
+}
+
 public class GameController : MonoBehaviour
 {
     public Hazard[] hazards;
     public Vector3 spawnValues;
+    public Resolution resolution;
     public int hazardCount;
     public float spawnWait;
     public float startWait;
@@ -62,6 +70,7 @@ public class GameController : MonoBehaviour
         }
 
         Time.timeScale = 1;
+        Screen.SetResolution(600, 900, true);
 
         cameras = new Camera[otherCameras.Length + 1];
         cameras[0] = topCamera;
@@ -86,10 +95,10 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-         //If the c button is pressed, switch to the next camera
-         //Set the camera at the current index to inactive, and set the next one in the array to active
-         //When we reach the end of the camera array, move back to the beginning or the array.
-         if (Input.GetKeyDown(KeyCode.C))
+        //If the c button is pressed, switch to the next camera
+        //Set the camera at the current index to inactive, and set the next one in the array to active
+        //When we reach the end of the camera array, move back to the beginning or the array.
+        if (Input.GetKeyDown(KeyCode.C))
          {
              currentCameraIndex ++;
              Debug.Log ("C button has been pressed. Switching to the next camera");
