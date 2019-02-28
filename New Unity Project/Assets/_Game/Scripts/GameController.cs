@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         }
 
         Time.timeScale = 1;
-        Screen.SetResolution(600, 900, true);
+        Screen.SetResolution(resolution.width, resolution.height, true);
 
         cameras = new Camera[otherCameras.Length + 1];
         cameras[0] = topCamera;
