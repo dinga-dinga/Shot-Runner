@@ -6,7 +6,12 @@ public class EnemyOnContact : MonoBehaviour
     public int scoreValue;
     public bool isShotResistant;
     public bool isDemolisher;
+    public bool isHamas;
+    public int scoreValuePerShot;
+    public int hitsToTake;
     private GameController gameController;
+    private SoldierActions actions;
+    private Transform soldierCharacter;
 
     void Start()
     {
@@ -19,42 +24,71 @@ public class EnemyOnContact : MonoBehaviour
         {
             Debug.Log("Cannot find 'GameController' script");
         }
+
+        soldierCharacter = transform.Find("Soldier");
+        actions = soldierCharacter.GetComponent<SoldierActions>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "EnemyAI" && tag == "Enemy")
+        if (isHamas)
         {
-            Instantiate(explosion, other.transform.position, other.transform.rotation);
-            Destroy(other.gameObject);
-        }
-        else if (other.tag == "Enemy" && tag == "Enemy")
-        {
-            var fractScrip = other.GetComponent<SwapFractured>();
-            if (fractScrip != null)
+            if (other.tag != "PShot")
             {
-                fractScrip.SpawnFracturedObject(explosion);
+                return;
+            }
+
+            print(other);
+            Destroy(other.gameObject);
+            Instantiate(explosion, other.transform.position, other.transform.rotation);
+            actions.SendMessage("Damage", SendMessageOptions.DontRequireReceiver);
+            gameController.AddScore(scoreValuePerShot);
+            hitsToTake--;
+
+            if (hitsToTake == 0)
+            {
+                GetComponent<EvasiveManeuver>().SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
+                actions.SendMessage("Death", SendMessageOptions.DontRequireReceiver);
+                Destroy(gameObject, 4);
+                gameController.AddScore(scoreValue);
+                gameController.GameTotalWin();
             }
         }
-        else if (other.tag == "PShot")
+        else
         {
-            if (!isShotResistant)
+            if (other.tag == "EnemyAI" && tag == "Enemy")
             {
-                var fractScrip = GetComponent<SwapFractured>();
+                Instantiate(explosion, other.transform.position, other.transform.rotation);
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Enemy" && tag == "Enemy")
+            {
+                var fractScrip = other.GetComponent<SwapFractured>();
                 if (fractScrip != null)
                 {
                     fractScrip.SpawnFracturedObject(explosion);
                 }
-                else if (explosion != null)
+            }
+            else if (other.tag == "PShot")
+            {
+                if (!isShotResistant)
                 {
-                    Instantiate(explosion, transform.position, transform.rotation);
-                    Destroy(gameObject);
+                    var fractScrip = GetComponent<SwapFractured>();
+                    if (fractScrip != null)
+                    {
+                        fractScrip.SpawnFracturedObject(explosion);
+                    }
+                    else if (explosion != null)
+                    {
+                        Instantiate(explosion, transform.position, transform.rotation);
+                        Destroy(gameObject);
+                    }
+
+                    gameController.AddScore(scoreValue);
                 }
 
-                gameController.AddScore(scoreValue);
+                Destroy(other.gameObject);
             }
-
-            Destroy(other.gameObject);
         }
     }
 }

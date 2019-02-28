@@ -2794,10 +2794,29 @@ PrefabInstance:
     - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53, type: 3}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: isHamas
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: scoreValuePerShot
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: hitsToTake
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865886842236580341, guid: afc18fc39ade3744397c0c993b57be53,
+        type: 3}
+      propertyPath: scoreValue
+      value: 5000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afc18fc39ade3744397c0c993b57be53, type: 3}
 --- !u!1 &2097725415 stripped
 GameObject:

@@ -257,7 +257,8 @@ public class GameController : MonoBehaviour
     public void GameTotalWin()
     {
         gameOverText.text = "You Win!";
-        restartText.text = "Press 'R' tp restart";
+        restartText.text = "Press 'R' tp restart\n" +
+                           "Press 'N' to go back to the Menu";
         restart = true;
         next = true;
 
